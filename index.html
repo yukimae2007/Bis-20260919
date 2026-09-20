@@ -69,6 +69,7 @@
     color: var(--text);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
   }
   body {
     min-height: 100vh;
@@ -102,43 +103,128 @@
   h1 {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 26px;
+    font-size: 29px;
     margin: 0;
     letter-spacing: 0.02em;
     color: var(--text);
   }
   .subtitle {
-    font-size: 12.5px;
+    font-size: 13.5px;
     color: var(--text-faint);
     margin-top: 3px;
   }
-  .castle-ref {
+  .bulk-set {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 10px;
-    padding: 10px 16px;
+    padding: 8px 10px 8px 14px;
+    flex-wrap: nowrap;
   }
-  .castle-ref label {
-    font-size: 12px;
+  .bulk-set label {
+    font-size: 11.5px;
     color: var(--text-dim);
     white-space: nowrap;
   }
-  .castle-ref input {
-    width: 56px;
+  .bulk-set input {
+    width: 52px;
     background: var(--bg-deep);
     border: 1px solid var(--line);
     border-radius: 6px;
     color: var(--gold-soft);
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 17px;
+    font-size: 16px;
     text-align: center;
     padding: 5px 4px;
   }
-  .castle-ref input:focus { outline: 1px solid var(--gold); }
+  .bulk-set input:focus { outline: 1px solid var(--gold); }
+  .bulk-set button {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold-soft);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    font-family: var(--font-body);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .bulk-set button:hover { background: rgba(201,166,63,0.12); }
+  .bulk-set button.confirming, .reset-btn.confirming {
+    background: var(--warn);
+    border-color: var(--warn);
+    color: #fff;
+  }
+
+  /* Recommendation */
+  .recommend-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .recommend-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(90deg, rgba(201,166,63,0.12), rgba(201,166,63,0.02));
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+  .recommend-card.secondary {
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  .recommend-card.secondary .recommend-label { color: var(--text-dim); }
+  .recommend-label {
+    font-family: var(--font-label);
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .recommend-icon {
+    font-size: 22px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .recommend-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .recommend-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17.5px;
+    color: var(--text);
+  }
+  .recommend-reason {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+  .recommend-lv {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15.5px;
+    color: var(--gold-soft);
+    white-space: nowrap;
+  }
+  .recommend-plus {
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold-soft);
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .recommend-plus:hover { background: rgba(201,166,63,0.15); }
 
   /* Tier sections */
   .tier {
@@ -152,18 +238,18 @@
   }
   .tier-mark {
     font-family: var(--font-label);
-    font-size: 13px;
+    font-size: 14px;
     color: var(--gold);
     letter-spacing: 0.08em;
   }
   .tier-name {
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: 19px;
     font-weight: 600;
     color: var(--text);
   }
   .tier-desc {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--text-faint);
     margin-left: auto;
     text-align: right;
@@ -184,7 +270,7 @@
   }
   .facility.behind { background: linear-gradient(90deg, rgba(201,107,74,0.08), transparent 40%); }
   .f-name {
-    font-size: 14.5px;
+    font-size: 16px;
     font-weight: 500;
     display: flex;
     align-items: flex-start;
@@ -214,7 +300,7 @@
     border: none;
     border-bottom: 1px dashed var(--line-soft);
     color: var(--text);
-    font-size: 14.5px;
+    font-size: 16px;
     font-weight: 500;
     font-family: var(--font-body);
     padding: 0 0 2px;
@@ -224,9 +310,9 @@
   }
   .f-name .custom-name-input:hover { border-bottom-color: var(--text-faint); }
   .f-name .custom-name-input:focus { outline: none; border-bottom: 1px solid var(--gold); }
-  .f-note { font-size: 11px; color: var(--text-faint); }
+  .f-note { font-size: 12.5px; color: var(--text-faint); }
   .f-gap {
-    font-size: 11px;
+    font-size: 12.5px;
     justify-self: end;
     min-width: 64px;
     text-align: right;
@@ -260,7 +346,7 @@
     color: var(--gold-soft);
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 15px;
+    font-size: 17px;
     padding: 4px 2px;
   }
   .lv-control input:focus { outline: 1px solid var(--gold); }
@@ -286,7 +372,7 @@
     border: 1px dashed var(--line);
     border-radius: 8px;
     color: var(--text);
-    font-size: 13.5px;
+    font-size: 15px;
     padding: 9px 12px;
     font-family: var(--font-body);
   }
@@ -297,7 +383,7 @@
     color: var(--gold-soft);
     border-radius: 8px;
     padding: 9px 16px;
-    font-size: 13px;
+    font-size: 14.5px;
     font-family: var(--font-body);
     cursor: pointer;
     white-space: nowrap;
@@ -313,7 +399,7 @@
     flex-wrap: wrap;
   }
   .save-state {
-    font-size: 11.5px;
+    font-size: 12.5px;
     color: var(--text-faint);
   }
   .reset-btn {
@@ -322,17 +408,31 @@
     color: var(--text-dim);
     border-radius: 8px;
     padding: 7px 14px;
-    font-size: 12px;
+    font-size: 13px;
     cursor: pointer;
   }
   .reset-btn:hover { border-color: var(--warn); color: var(--warn); }
 
   @media (max-width: 640px) {
-    .facility { grid-template-columns: 1fr auto auto; row-gap: 6px; }
-    .f-gap { grid-column: 1 / 2; justify-self: start; }
-    .del-btn { grid-column: 3; }
-    .castle-ref { width: 100%; justify-content: space-between; }
-    header { align-items: stretch; }
+    .wrap { padding: 24px 14px 70px; }
+    header { align-items: stretch; padding-bottom: 18px; margin-bottom: 22px; }
+    h1 { font-size: 24px; }
+    .tier-head { flex-wrap: wrap; }
+    .tier-desc { margin-left: 0; text-align: left; flex-basis: 100%; }
+    .facility { grid-template-columns: 1fr auto auto; gap: 10px 14px; row-gap: 8px; padding: 14px 4px; }
+    .f-gap { grid-column: 1 / 2; justify-self: start; min-width: 0; }
+    .del-btn { grid-column: 3; font-size: 18px; padding: 6px 8px; }
+    .lv-control { gap: 8px; }
+    .lv-control button { width: 32px; height: 32px; font-size: 17px; }
+    .lv-control input { width: 50px; font-size: 18px; padding: 6px 2px; }
+    .recommend-card { flex-wrap: wrap; padding: 14px; }
+    .recommend-plus { width: 36px; height: 36px; font-size: 18px; }
+    .add-row { flex-wrap: wrap; }
+    .add-row input { flex-basis: 100%; padding: 11px 12px; }
+    .add-row button { flex: 1; padding: 11px 16px; }
+    footer { flex-direction: column-reverse; align-items: stretch; gap: 14px; }
+    .reset-btn { width: 100%; padding: 10px 14px; }
+    .bulk-set { width: 100%; justify-content: space-between; }
   }
 </style>
 </head>
@@ -353,11 +453,14 @@
         <div class="subtitle">各施設のレベルを一覧管理 — 本拠地レベルを基準に遅れをひと目で確認</div>
       </div>
     </div>
-    <div class="castle-ref">
-      <label>本拠地 Lv</label>
-      <input type="number" id="castleLevel" min="1" value="50">
+    <div class="bulk-set">
+      <label>全施設を一括設定</label>
+      <input type="number" id="bulkLevel" min="0" value="40">
+      <button id="bulkSetBtn">設定</button>
     </div>
   </header>
+
+  <div id="recommend"></div>
 
   <div id="tiers"></div>
 
@@ -373,7 +476,6 @@
   const STORAGE_KEY = 'th_facility_tracker_v3';
 
   const DEFAULT_DATA = {
-    castleLevel: 50,
     tiers: [
       {
         id: 'tier1',
@@ -381,15 +483,15 @@
         name: '基幹施設・軍事',
         desc: '本拠地レベルより遅らせない',
         facilities: [
-          { id: 'honkyo', name: '本拠地', note: '英雄レベル上限の増加／略奪可能資源上限の増加／新たなコンテンツ解放', level: 50, gate: true },
-          { id: 'research', name: '研究院', note: '科学技術の研究', level: 45, gate: true },
-          { id: 'barracks_union', name: 'ユニオン兵舎', note: 'ユニオン兵の訓練', level: 45, gate: true },
-          { id: 'barracks_clan', name: 'クラン兵舎', note: 'クラン兵の訓練', level: 45, gate: true },
-          { id: 'barracks_forest', name: 'フォレスト兵舎', note: 'フォレスト兵の訓練', level: 45, gate: true },
-          { id: 'training_union', name: '訓練場ユニオン', note: '兵士の収容', level: 45, gate: true },
-          { id: 'training_clan', name: '訓練場クラン', note: '兵士の収容', level: 45, gate: true },
-          { id: 'training_forest', name: '訓練場フォレスト', note: '兵士の収容', level: 45, gate: true },
-          { id: 'hospital', name: '病院', note: '負傷した兵士の治療', level: 45, gate: true },
+          { id: 'honkyo', name: '本拠地', note: '英雄レベル上限の増加／略奪可能資源上限の増加／新たなコンテンツ解放', level: 40, gate: true },
+          { id: 'research', name: '研究院', note: '科学技術の研究', level: 40, gate: true },
+          { id: 'barracks_union', name: 'ユニオン兵舎', note: 'ユニオン兵の訓練', level: 40, gate: true },
+          { id: 'barracks_clan', name: 'クラン兵舎', note: 'クラン兵の訓練', level: 40, gate: true },
+          { id: 'barracks_forest', name: 'フォレスト兵舎', note: 'フォレスト兵の訓練', level: 40, gate: true },
+          { id: 'training_union', name: '訓練場ユニオン', note: '兵士の収容', level: 40, gate: true },
+          { id: 'training_clan', name: '訓練場クラン', note: '兵士の収容', level: 40, gate: true },
+          { id: 'training_forest', name: '訓練場フォレスト', note: '兵士の収容', level: 40, gate: true },
+          { id: 'hospital', name: '病院', note: '負傷した兵士の治療', level: 40, gate: true },
         ]
       },
       {
@@ -398,19 +500,17 @@
         name: '戦力強化',
         desc: '基幹施設が整ってから',
         facilities: [
-          { id: 'statue_union', name: 'ユニオンの像', note: 'ユニオン英雄の戦闘力を強化', level: 30, gate: false },
-          { id: 'statue_clan', name: 'クランの像', note: 'クラン英雄の戦闘力を強化', level: 30, gate: false },
-          { id: 'statue_forest', name: 'フォレストの像', note: 'フォレスト英雄の戦闘力を強化', level: 30, gate: false },
-          { id: 'herostatue', name: '英雄像', note: 'ルーンを強化と管理', level: 30, gate: false },
-          { id: 'rally', name: '集結ホール', note: '集結時の戦闘力を強化／集結の参加上限を増加', level: 25, gate: false },
-          { id: 'weaponlab', name: '兵装研究所', note: '兵装の強化', level: 25, gate: false },
-          { id: 'medalhall', name: '勲章の殿堂', note: '専用クエストで勲章入手', level: 20, gate: false },
-          { id: 'lordhall', name: '領主ホール', note: '領主天賦の強化', level: 25, gate: false },
-          { id: 'beastaltar', name: '魔獣の祭壇', note: '魔獣の解放／魔獣の強化', level: 20, gate: false },
-          { id: 'kingdomsword', name: '王国の剣', note: '領主ダメージアップ／兵士攻撃力アップ', level: 20, gate: false },
-          { id: 'kingdomshield', name: '王国の盾', note: '領主ダメージ軽減アップ／兵士HPアップ', level: 20, gate: false },
-          { id: 'watchtower', name: '監視塔', note: '偵察の効率強化', level: 20, gate: false },
-          { id: 'relicaltar', name: '秘宝の祭壇', note: '秘宝の強化', level: 20, gate: false },
+          { id: 'statue_union', name: 'ユニオンの像', note: 'ユニオン英雄の戦闘力を強化', level: 40, gate: false },
+          { id: 'statue_clan', name: 'クランの像', note: 'クラン英雄の戦闘力を強化', level: 40, gate: false },
+          { id: 'statue_forest', name: 'フォレストの像', note: 'フォレスト英雄の戦闘力を強化', level: 40, gate: false },
+          { id: 'rally', name: '集結ホール', note: '集結時の戦闘力を強化／集結の参加上限を増加', level: 40, gate: false },
+          { id: 'weaponlab', name: '兵装研究所', note: '兵装の強化', level: 40, gate: false },
+          { id: 'medalhall', name: '勲章の殿堂', note: '専用クエストで勲章入手', level: 40, gate: false },
+          { id: 'lordhall', name: '領主ホール', note: '領主天賦の強化', level: 40, gate: false },
+          { id: 'kingdomsword', name: '王国の剣', note: '領主ダメージアップ／兵士攻撃力アップ', level: 40, gate: false },
+          { id: 'kingdomshield', name: '王国の盾', note: '領主ダメージ軽減アップ／兵士HPアップ', level: 40, gate: false },
+          { id: 'watchtower', name: '監視塔', note: '偵察の効率強化', level: 40, gate: false },
+          { id: 'relicaltar', name: '秘宝の祭壇', note: '秘宝の強化', level: 40, gate: false },
         ]
       },
       {
@@ -419,17 +519,20 @@
         name: '資源・生産',
         desc: '余裕があるときに',
         facilities: [
-          { id: 'ranch', name: '牧場', note: '肉を自動で生産', level: 25, gate: false },
-          { id: 'lumberyard', name: '伐採場', note: '木材を自動で生産', level: 25, gate: false },
-          { id: 'quarry', name: '採石場', note: '石材を自動で生産', level: 25, gate: false },
-          { id: 'orequarry', name: '粗鉱石採石場', note: '粗鉱石を自動で生産', level: 20, gate: false },
-          { id: 'enhancestonemine', name: '強化石採掘場', note: '装備強化石を自動で生産', level: 20, gate: false },
-          { id: 'rubymine', name: 'ルビー鉱山', note: 'ルビーを自動で生産', level: 20, gate: false },
-          { id: 'monastery', name: '修道院', note: 'スキルブックを自動で生産', level: 20, gate: false },
-          { id: 'runestonemine', name: '魔紋石採掘場', note: '魔紋石を自動で生産', level: 20, gate: false },
-          { id: 'achievementstele', name: '功績の石碑', note: '勲章を自動で生産', level: 20, gate: false },
-          { id: 'warehouse', name: '倉庫', note: '石材と木材の保管', level: 20, gate: false },
-          { id: 'cafeteria', name: '食堂', note: '伐採場／採石場／牧場の生産効率アップ', level: 20, gate: false },
+          { id: 'ranch', name: '牧場', note: '肉を自動で生産', level: 40, gate: false },
+          { id: 'lumberyard', name: '伐採場', note: '木材を自動で生産', level: 40, gate: false },
+          { id: 'quarry', name: '採石場', note: '石材を自動で生産', level: 40, gate: false },
+          { id: 'orequarry', name: '粗鉱石採石場', note: '粗鉱石を自動で生産', level: 40, gate: false },
+          { id: 'enhancestonemine', name: '強化石採掘場', note: '装備強化石を自動で生産', level: 40, gate: false },
+          { id: 'rubymine', name: 'ルビー鉱山', note: 'ルビーを自動で生産', level: 40, gate: false },
+          { id: 'monastery', name: '修道院', note: 'スキルブックを自動で生産', level: 40, gate: false },
+          { id: 'runestonemine', name: '魔紋石採掘場', note: '魔紋石を自動で生産', level: 40, gate: false },
+          { id: 'achievementstele', name: '功績の石碑', note: '勲章を自動で生産', level: 40, gate: false },
+          { id: 'warehouse', name: '倉庫', note: '石材と木材の保管', level: 40, gate: false },
+          { id: 'warehouse2', name: '倉庫②', note: '石材と木材の保管', level: 40, gate: false },
+          { id: 'warehouse3', name: '倉庫③', note: '石材と木材の保管', level: 40, gate: false },
+          { id: 'petfoodfactory', name: 'ペットフード工場', note: 'ペットフードを自動で生産', level: 40, gate: false },
+          { id: 'cafeteria', name: '食堂', note: '伐採場／採石場／牧場の生産効率アップ', level: 40, gate: false },
         ]
       },
       {
@@ -438,22 +541,46 @@
         name: 'その他',
         desc: '各種コンテンツ・支援施設',
         facilities: [
-          { id: 'tavern', name: '酒場', note: '英雄の募集／秘宝の占い', level: 20, gate: false },
-          { id: 'blacksmith', name: '鍛冶屋', note: '装備の強化と鍛造', level: 20, gate: false },
-          { id: 'arena', name: '闘技場', note: 'ポイントマッチへの参加', level: 15, gate: false },
-          { id: 'guildoffice', name: 'ギルド事務所', note: 'ギルドコンテンツへの参加／ギルドメンバーとの協力', level: 15, gate: false },
-          { id: 'expedition', name: '遠征ホール', note: '遠征への参加', level: 15, gate: false },
-          { id: 'recruithall', name: '求人ホール', note: '村人の強化と派遣', level: 15, gate: false },
-          { id: 'pethouse', name: 'ペットの小屋', note: 'シーズン1で解放／ペットの孵化／ペットの強化', level: 10, gate: false },
+          { id: 'tavern', name: '酒場', note: '英雄の募集／秘宝の占い', level: 40, gate: false },
+          { id: 'blacksmith', name: '鍛冶屋', note: '装備の強化と鍛造', level: 40, gate: false },
+          { id: 'guildoffice', name: 'ギルド事務所', note: 'ギルドコンテンツへの参加／ギルドメンバーとの協力', level: 40, gate: false },
+          { id: 'recruithall', name: '求人ホール', note: '村人の強化と派遣', level: 40, gate: false },
+          { id: 'pethouse', name: 'ペットの小屋', note: 'シーズン1で解放／ペットの孵化／ペットの強化', level: 40, gate: false },
         ]
       }
     ]
   };
 
+  function mergeWithDefaults(saved) {
+    const result = { tiers: [] };
+    DEFAULT_DATA.tiers.forEach(defTier => {
+      const savedTier = (saved.tiers || []).find(t => t.id === defTier.id);
+      const savedById = {};
+      (savedTier ? savedTier.facilities : []).forEach(f => { savedById[f.id] = f; });
+
+      // Keep facilities defined in the current template; carry over saved level/name if present
+      const merged = defTier.facilities.map(defF => {
+        const sf = savedById[defF.id];
+        return sf ? { ...defF, level: sf.level, name: sf.name } : { ...defF };
+      });
+
+      // Keep user-added custom facilities (not part of the template) that weren't deleted
+      const defIds = new Set(defTier.facilities.map(f => f.id));
+      (savedTier ? savedTier.facilities : []).forEach(f => {
+        if (!defIds.has(f.id) && f.id.indexOf('custom_') === 0) {
+          merged.push(f);
+        }
+      });
+
+      result.tiers.push({ ...defTier, facilities: merged });
+    });
+    return result;
+  }
+
   function loadData() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) return JSON.parse(raw);
+      if (raw) return mergeWithDefaults(JSON.parse(raw));
     } catch (e) { console.warn('load failed', e); }
     return JSON.parse(JSON.stringify(DEFAULT_DATA));
   }
@@ -474,11 +601,85 @@
   let state = loadData();
 
   const tiersEl = document.getElementById('tiers');
-  const castleInput = document.getElementById('castleLevel');
+  const recommendEl = document.getElementById('recommend');
+
+  function getCastleLevel() {
+    const tier1 = state.tiers.find(t => t.id === 'tier1');
+    const honkyo = tier1 && tier1.facilities.find(f => f.id === 'honkyo');
+    return honkyo ? honkyo.level : 0;
+  }
+
+  function getRecommendations(count) {
+    const castleLevel = getCastleLevel();
+    const results = [];
+    const usedIds = new Set();
+
+    const tier1 = state.tiers.find(t => t.id === 'tier1');
+    if (tier1) {
+      const gated = tier1.facilities
+        .filter(f => f.gate && f.id !== 'honkyo')
+        .map(f => ({ f, gap: castleLevel - f.level }))
+        .filter(x => x.gap > 5)
+        .sort((a, b) => b.gap - a.gap);
+      for (const g of gated) {
+        if (results.length >= count) break;
+        results.push({ facility: g.f, reason: `本拠地よりLv${g.gap}遅れています。優先的に上げましょう` });
+        usedIds.add(g.f.id);
+      }
+    }
+
+    if (results.length < count) {
+      for (const tierId of ['tier2', 'tier3', 'tier4']) {
+        if (results.length >= count) break;
+        const tier = state.tiers.find(t => t.id === tierId);
+        if (!tier) continue;
+        const sorted = [...tier.facilities]
+          .filter(f => !usedIds.has(f.id))
+          .sort((a, b) => a.level - b.level);
+        for (const f of sorted) {
+          if (results.length >= count) break;
+          results.push({ facility: f, reason: `「${tier.name}」の中で最もレベルが低い施設です` });
+          usedIds.add(f.id);
+        }
+      }
+    }
+
+    return results;
+  }
+
+  function renderRecommendation() {
+    const recs = getRecommendations(3);
+    if (!recs.length) { recommendEl.innerHTML = ''; return; }
+    const labels = ['次はコレ', '次点②', '次点③'];
+    recommendEl.innerHTML = '<div class="recommend-list"></div>';
+    const listEl = recommendEl.querySelector('.recommend-list');
+    recs.forEach((rec, i) => {
+      const { facility, reason } = rec;
+      const card = document.createElement('div');
+      card.className = 'recommend-card' + (i > 0 ? ' secondary' : '');
+      card.innerHTML = `
+        <span class="recommend-label">${labels[i] || `候補${i + 1}`}</span>
+        <span class="recommend-icon">${getIcon(facility.id)}</span>
+        <div class="recommend-body">
+          <div class="recommend-name">${escapeHtml(facility.name)}</div>
+          <div class="recommend-reason">${escapeHtml(reason)}</div>
+        </div>
+        <span class="recommend-lv">Lv${facility.level}</span>
+        <button class="recommend-plus" data-role="recommend-plus" title="レベルを上げる">＋</button>
+      `;
+      card.querySelector('[data-role="recommend-plus"]').addEventListener('click', () => {
+        facility.level = facility.level + 1;
+        saveData(); render();
+      });
+      listEl.appendChild(card);
+    });
+  }
 
   function render() {
-    castleInput.value = state.castleLevel;
+    renderRecommendation();
     tiersEl.innerHTML = '';
+
+    const castleLevel = getCastleLevel();
 
     state.tiers.forEach(tier => {
       const tierDiv = document.createElement('div');
@@ -497,7 +698,7 @@
       list.className = 'card-list';
 
       tier.facilities.forEach(f => {
-        const gap = state.castleLevel - f.level;
+        const gap = f.id === 'honkyo' ? 0 : castleLevel - f.level;
         const gated = f.gate;
         const row = document.createElement('div');
         row.className = 'facility' + (gated && gap > 10 ? ' behind' : '');
@@ -616,6 +817,7 @@
     achievementstele: '🏆',
     warehouse: '📦',
     cafeteria: '🍽️',
+    petfoodfactory: '🥫',
     tavern: '🍺',
     blacksmith: '🔨',
     arena: '🏟️',
@@ -635,16 +837,42 @@
   }
   function escapeAttr(s) { return escapeHtml(s); }
 
-  castleInput.addEventListener('change', e => {
-    state.castleLevel = Math.max(1, parseInt(e.target.value) || 1);
-    saveData(); render();
-  });
+  function armConfirm(button, idleLabel, confirmLabel, action) {
+    if (button.dataset.armed === '1') {
+      clearTimeout(button._armTimer);
+      button.dataset.armed = '0';
+      button.textContent = idleLabel;
+      button.classList.remove('confirming');
+      action();
+    } else {
+      button.dataset.armed = '1';
+      button.textContent = confirmLabel;
+      button.classList.add('confirming');
+      button._armTimer = setTimeout(() => {
+        button.dataset.armed = '0';
+        button.textContent = idleLabel;
+        button.classList.remove('confirming');
+      }, 3000);
+    }
+  }
 
-  document.getElementById('resetBtn').addEventListener('click', () => {
-    if (confirm('全ての記録を初期状態に戻します。よろしいですか？')) {
+  const resetBtn = document.getElementById('resetBtn');
+  resetBtn.addEventListener('click', () => {
+    armConfirm(resetBtn, '初期状態に戻す', 'もう一度押すと実行', () => {
       state = JSON.parse(JSON.stringify(DEFAULT_DATA));
       saveData(); render();
-    }
+    });
+  });
+
+  const bulkSetBtn = document.getElementById('bulkSetBtn');
+  bulkSetBtn.addEventListener('click', () => {
+    const val = Math.max(0, parseInt(document.getElementById('bulkLevel').value) || 0);
+    armConfirm(bulkSetBtn, '設定', `Lv${val}に設定`, () => {
+      state.tiers.forEach(tier => {
+        tier.facilities.forEach(f => { f.level = val; });
+      });
+      saveData(); render();
+    });
   });
 
   render();
